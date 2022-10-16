@@ -22,7 +22,6 @@ h1{
     min-height: 10px;          
 }
 /*.grid:hover{background-color: tomato;}*/
-.hover{
-    background-color: rgba(67, 9, 159, 0.823);    
+.hover{    
     transition: .4s ease;
 }

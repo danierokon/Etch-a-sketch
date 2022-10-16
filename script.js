@@ -1,5 +1,6 @@
 const container = document.querySelector('#container');
 const grids = [];
+const blackness = [];
 
 function createGrid(input){    
     for(i=0; i<(input*input); i++){
@@ -13,12 +14,28 @@ function createGrid(input){
     `grid-template-columns: repeat(${input},1fr);`   
     for (grid of grids){
         grid.addEventListener('mouseover',hoverEffect);
+        blackness.push(0);
     } 
 }
 createGrid(16); //initialize
 
 function hoverEffect(e){
-    this.classList.add('hover')    
+    this.classList.add('hover');
+    blackness[grids.indexOf(this)] += 10;
+    let red = randomColor(blackness[grids.indexOf(this)]),
+        green = randomColor(blackness[grids.indexOf(this)]),
+        blue = randomColor(blackness[grids.indexOf(this)]);
+    this.style.cssText = `background-color: rgb(${red}%,
+                                                ${green}%,
+                                                ${blue}%)`        
+    //console.log(grids.indexOf(this));
+    
+}
+function randomColor(blackness=0){
+    if (blackness>=100){
+        return Math.random()*0;
+    }else return Math.random()*(100-blackness);   
+    
 }
 
 const inputButton = document.querySelector('#input');
@@ -44,4 +61,5 @@ function removeOldGrids(){
         container.removeChild(container.firstChild);
     }
     grids.splice(0,grids.length);   
+    blackness.splice(0,blackness.length);
 }
