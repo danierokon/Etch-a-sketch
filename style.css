@@ -6,7 +6,7 @@ h1{
 
 #container{
     min-width: 100px;
-    min-height: 320px;
+    min-height: 100px;
     max-width: 960px;
     max-height: 960px;    
     margin: 8px;
